@@ -7,11 +7,28 @@ public class BalloonController : MonoBehaviour
     public float balloonSpeed;
     public float maxHeight;
     public float initialHeight;
+    private bool isTargeted;
+    public GameObject popEffect;
+
+    public void SetGazedAt(bool gazedAt)
+    {
+        isTargeted = gazedAt;
+    }
+
+    public void Fire()
+    {
+        if (isTargeted)
+        {
+            Instantiate(popEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         initialHeight = transform.position.y;
+        SetGazedAt(false);
     }
 
     // Update is called once per frame
