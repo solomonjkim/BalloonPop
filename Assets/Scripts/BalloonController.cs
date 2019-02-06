@@ -9,6 +9,19 @@ public class BalloonController : MonoBehaviour
     public float initialHeight;
     private bool isTargeted;
     public GameObject popEffect;
+    public int points = 1;
+
+    public delegate void OnPop(int pts);
+
+    public static event OnPop onBalloonPop;
+
+    void PopBalloon()
+    {
+        GameObject effectObject = Instantiate(popEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+        Destroy(effectObject, 3);
+        onBalloonPop?.Invoke(points);
+    }
 
     public void SetGazedAt(bool gazedAt)
     {
@@ -19,8 +32,7 @@ public class BalloonController : MonoBehaviour
     {
         if (isTargeted)
         {
-            Instantiate(popEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
+            PopBalloon();
         }
     }
 
