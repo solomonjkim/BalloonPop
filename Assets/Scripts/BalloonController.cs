@@ -10,6 +10,11 @@ public class BalloonController : MonoBehaviour
     private bool isTargeted;
     public GameObject popEffect;
     public int points = 1;
+    public int balloonDamage;
+
+    PlayerHealth playerHealth;
+    GameObject player;
+    ObjectSpawner objectSpawner;
 
     public delegate void OnPop(int pts);
 
@@ -39,8 +44,10 @@ public class BalloonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         initialHeight = transform.position.y;
         SetGazedAt(false);
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -54,6 +61,14 @@ public class BalloonController : MonoBehaviour
 
         if (transform.position.y - initialHeight > maxHeight) {
             Destroy(gameObject);
+            if (playerHealth.currentHealth > 0)
+            {
+                playerHealth.TakeDamage(balloonDamage);
+            }
+            if(playerHealth.currentHealth <= 0)
+            {
+                playerHealth.Death();
+            }
         }
     }
 }

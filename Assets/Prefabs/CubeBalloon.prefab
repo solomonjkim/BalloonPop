@@ -96,6 +96,8 @@ MonoBehaviour:
   maxHeight: 10
   initialHeight: 0
   popEffect: {fileID: 159918, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
+  points: 1
+  balloonDamage: 2
 --- !u!114 &5382577537242779864
 MonoBehaviour:
   m_ObjectHideFlags: 0
