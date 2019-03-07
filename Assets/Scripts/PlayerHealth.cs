@@ -49,6 +49,6 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
 
-        //reset all scores, health, and level variables. 
+        //reset all scores, health, and level variables. try to just reference back to scene 1
     }
 }

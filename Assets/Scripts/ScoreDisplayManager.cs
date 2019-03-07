@@ -8,7 +8,6 @@ public class ScoreDisplayManager : MonoBehaviour
     private int totalPoints;
     public Slider LevelSlider;
     public Text levelText;
-    private int level = 0;
 
 
     void UpdateDisplay(int points)
@@ -17,12 +16,8 @@ public class ScoreDisplayManager : MonoBehaviour
         Text scoreText = GetComponent<Text>();
         scoreText.text = "Score: " + totalPoints;
         LevelSlider.value = totalPoints; ;
-        if (totalPoints%20 >= level)
-        {
-            levelText.text = "Level: " + level;
-            level += 1;
-        }
-    }
+        levelText.text = "Level: 1";   
+       }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +38,6 @@ public class ScoreDisplayManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if totalpoints >= 50{ then switch levels to scene 2}
     }
 }

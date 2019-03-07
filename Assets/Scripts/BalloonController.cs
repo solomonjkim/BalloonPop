@@ -14,7 +14,6 @@ public class BalloonController : MonoBehaviour
 
     PlayerHealth playerHealth;
     GameObject player;
-    ObjectSpawner objectSpawner;
 
     public delegate void OnPop(int pts);
 
